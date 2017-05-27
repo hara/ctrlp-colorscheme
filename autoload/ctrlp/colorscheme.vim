@@ -75,7 +75,11 @@ endfunction
 "
 function! ctrlp#colorscheme#accept(mode, str)
   call ctrlp#exit()
-  execute 'colorscheme' a:str
+  if exists('g:ctrlp_ext_color_command')
+    execute g:ctrlp_ext_color_command a:str
+  else
+    execute 'colorscheme' a:str
+  endif
 endfunction
 
 
